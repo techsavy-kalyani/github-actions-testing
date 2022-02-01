@@ -1,17 +1,17 @@
 name: Run Python Divisible Tests
 
 on: 
-  #schedule:
-    #- cron: "0/10 * * * *"
+  schedule:
+    - cron: "0/10 * * * *"
     #minute hour day(month) month day(week)
-  push:
+  #push:
 
 jobs:
   build:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: Install Python 3
         uses: actions/setup-python@v2
         with:
