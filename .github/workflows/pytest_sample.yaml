@@ -26,3 +26,4 @@ jobs:
 
       - name: Run tests with parametrize marker
         run: pytest -v -m parametrize divisible.py
+        continue-on-error: true
