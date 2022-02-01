@@ -1,10 +1,10 @@
 name: Run Python Divisible Tests
 
 on: 
-  schedule:
-    - cron: "0/10 * * * *"
+  #schedule:
+    #- cron: "0/10 * * * *"
     #minute hour day(month) month day(week)
-  #push:
+  push:
 
 jobs:
   build:
