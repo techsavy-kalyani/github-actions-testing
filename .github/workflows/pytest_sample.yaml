@@ -1,0 +1,28 @@
+name: Run Python Divisible Tests
+
+on: 
+  #schedule:
+    #- cron: "0/10 * * * *"
+    #minute hour day(month) month day(week)
+  push:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Python 3
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9.6'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run tests with divisible marker
+        run: pytest -v -m divisible divisible.py
+        continue-on-error: true
+
+      - name: Run tests with parametrize marker
+        run: pytest -v -m parametrize divisible.py
