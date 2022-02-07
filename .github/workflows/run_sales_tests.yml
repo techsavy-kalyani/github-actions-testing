@@ -23,9 +23,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Install the project
-        run: docker-compose up -d
-
       - name: Install Python 3
         uses: actions/setup-python@v2
         with:
