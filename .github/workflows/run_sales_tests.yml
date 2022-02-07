@@ -34,6 +34,6 @@ jobs:
           pip install -r requirements.txt
           
       - name: Run ALL Divisible Tests
-        working-directory: sales
+        working-directory: automation\tests\functional\sales
         run: pytest -v -m ${{ github.event.inputs.marker }}
         continue-on-error: true
