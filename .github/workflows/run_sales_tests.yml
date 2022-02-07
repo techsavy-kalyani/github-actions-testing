@@ -1,0 +1,40 @@
+name: Run Pytest Sales Tests
+
+on:
+  workflow_dispatch:
+    inputs:
+      marker:
+        description: 'Pytest Markers'
+        required: true
+        default: 'divisible'
+
+jobs:
+  run-sales-test:
+    runs-on: windows-2019
+    steps:
+      - shell: powershell
+        name: create environment
+        run: |
+          cd C:
+          mkdir -p Sprint
+          cd Sprint
+          pwd
+
+      - name: Install the project
+        uses: actions/checkout@v2
+        run: docker-compose up -d
+
+      - name: Install Python 3
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9.6'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          
+      - name: Run ALL Divisible Tests
+        working-directory: sales
+        run: pytest -v -m ${{ github.event.inputs.marker }}
+        continue-on-error: true
