@@ -40,5 +40,5 @@ jobs:
           
       - name: Run ALL Divisible Tests
         working-directory: automation\tests\functional\sales
-        run: pytest -v -m ${{ github.event.inputs.marker }} *.py
+        run: pytest -v -m ${{ github.event.inputs.marker }} divisible_tests.py
         continue-on-error: true
