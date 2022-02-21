@@ -25,10 +25,10 @@ jobs:
          
      - name: Set driver path
        run: |
-         echo "driver_path=${{ steps.path_by_id.outputs.DRIVER_PATH }}\chromedriver.exe" >> $GITHUB_ENV
+         echo "chrome_driver_path=${{ steps.path_by_id.outputs.DRIVER_PATH }}\chromedriver.exe" >> $GITHUB_ENV
        
      - name: Print driver path
-       run: echo "${{ env.driver_path }}"
+       run: echo "${{ env.chrome_driver_path }}"
      
      - name: Set selected color
        run: echo '::set-output name=SELECTED_COLOR::green'
