@@ -15,11 +15,15 @@ jobs:
          pwd
          cd automation/tests/functional/sales
          pwd
-         echo "{path}"
-         echo $GITHUB_PATH
          
-     #- name: Print path
-     #  run: echo "Path: ${{ steps.finalpath. }}"
+     - name: Retrive path
+       #run: echo "Path: ${{ steps.finalpath. }}"
+       run: |
+         echo "::set-output name=DRIVER_PATH::$(pwd)"
+         id: path_by_id
+         
+     - name: Print path
+       run: echo "${{ steps.path_by_id.outputs.DRIVER_PATH }}"
      
      - name: Set selected color
        run: echo '::set-output name=SELECTED_COLOR::green'
