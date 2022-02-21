@@ -1,8 +1,5 @@
 name: Test Path with id
 
-env:
-  WORKSPACE_PATH: 'custom path'
-  
 on: 
   push:
   workflow_dispatch:
@@ -27,7 +24,10 @@ jobs:
          echo "::set-output name=DRIVER_PATH::$(pwd)"
          
      - name: Print path
-       run: echo "driver_path=${{ steps.path_by_id.outputs.DRIVER_PATH }}\chromedriver.exe"
+       run: echo "driver_path=${{ steps.path_by_id.outputs.DRIVER_PATH }}\chromedriver.exe" >> $GITHUB_ENV
+       
+     - name: Print driver path
+       run: echo "${{ env.driver_path }}"
      
      - name: Set selected color
        run: echo '::set-output name=SELECTED_COLOR::green'
