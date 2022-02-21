@@ -20,8 +20,8 @@ jobs:
        #run: echo "Path: ${{ steps.finalpath. }}"
        id: path_by_id
        run: |
-         echo "::set-output name=DRIVER_PATH::$(cd automation/tests/functional/sales | pwd)"
-         
+         cd automation/tests/functional/sales
+         echo "::set-output name=DRIVER_PATH::$(pwd)"
          
      - name: Print path
        run: echo "${{ steps.path_by_id.outputs.DRIVER_PATH }}"
