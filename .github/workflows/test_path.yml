@@ -25,7 +25,8 @@ jobs:
          
      - name: Set driver path
        run: |
-         echo "chrome_driver_path=${{ steps.path_by_id.outputs.DRIVER_PATH }}\chromedriver.exe" >> $GITHUB_ENV
+         chrome_driver_path = echo "${{ steps.path_by_id.outputs.DRIVER_PATH }}\chromedriver.exe"
+         echo $chrome_driver_path
        
      - name: Print driver path
        run: echo "${{ env.chrome_driver_path }}"
