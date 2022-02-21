@@ -1,14 +1,12 @@
 name: Test Path with id
 
-env:
-  PATH: 'xyz'
 on: 
   push:
   workflow_dispatch:
   
 jobs:
   run-sample-test:
-   runs-on: windows-latest
+   runs-on: windows-2019
    steps:
      - name: Install project
        uses: actions/checkout@v2
@@ -27,10 +25,7 @@ jobs:
          
      - name: Print path
        run: echo "${{ steps.path_by_id.outputs.DRIVER_PATH }}
-       #/chromedriver.exe" >> ${{ env.PATH }}
-       
-     - name: Print PATH environment variable
-       run: echo ${{ env.PATH }}
+
      
      - name: Set selected color
        run: echo '::set-output name=SELECTED_COLOR::green'
