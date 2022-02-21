@@ -27,7 +27,7 @@ jobs:
          echo "::set-output name=DRIVER_PATH::$(pwd)"
          
      - name: Print path
-       run: echo "${{ steps.path_by_id.outputs.DRIVER_PATH }}/chromedriver.exe"
+       run: echo "driver_path=${{ steps.path_by_id.outputs.DRIVER_PATH }}\chromedriver.exe"
      
      - name: Set selected color
        run: echo '::set-output name=SELECTED_COLOR::green'
