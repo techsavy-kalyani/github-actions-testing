@@ -23,8 +23,9 @@ jobs:
          cd automation/tests/functional/sales
          echo "::set-output name=DRIVER_PATH::$(pwd)"
          
-     - name: Print path
-       run: echo "driver_path=${{ steps.path_by_id.outputs.DRIVER_PATH }}\chromedriver.exe" >> $GITHUB_ENV
+     - name: Set driver path
+       run: |
+         echo "driver_path=${{ steps.path_by_id.outputs.DRIVER_PATH }}\chromedriver.exe" >> $GITHUB_ENV
        
      - name: Print driver path
        run: echo "${{ env.driver_path }}"
