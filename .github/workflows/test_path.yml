@@ -1,0 +1,25 @@
+name: Test Path with id
+
+on: 
+  workflow_dispatch:
+  
+jobs:
+  run-sample-test:
+   runs-om: windows-2019
+   steps:
+     - name: Install project
+       uses: actions/checkout@v2
+     - name: Check path
+       id: final_path
+       run: |
+         pwd
+         cd automation/tests/functional/sales
+         pwd
+     - name: Print path
+       run: echo "Path: ${{ steps.final_path.outcome }}"
+     - name: Set selected color
+         run: echo '::set-output name=SELECTED_COLOR::green'
+         id: random-color-generator
+     - name: Get color
+       run: echo "The selected color is ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}"
+        
