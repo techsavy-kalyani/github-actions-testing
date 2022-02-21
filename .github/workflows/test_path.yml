@@ -1,8 +1,9 @@
 name: Test Path with id
 
 env:
-  PATH: ''
+  PATH: 'xyz'
 on: 
+  push:
   workflow_dispatch:
   
 jobs:
@@ -19,7 +20,6 @@ jobs:
          pwd
          
      - name: Retrive path
-       #run: echo "Path: ${{ steps.finalpath. }}"
        id: path_by_id
        run: |
          cd automation/tests/functional/sales
