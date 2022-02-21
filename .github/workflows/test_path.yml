@@ -5,21 +5,25 @@ on:
   
 jobs:
   run-sample-test:
-   runs-om: windows-2019
+   runs-on: windows-2019
    steps:
      - name: Install project
        uses: actions/checkout@v2
      - name: Check path
-       id: final_path
+       id: finalpath
        run: |
          pwd
          cd automation/tests/functional/sales
          pwd
-     - name: Print path
-       run: echo "Path: ${{ steps.final_path.outcome }}"
+         echo "{path}"
+         echo $GITHUB_PATH
+         
+     #- name: Print path
+     #  run: echo "Path: ${{ steps.finalpath. }}"
+     
      - name: Set selected color
-         run: echo '::set-output name=SELECTED_COLOR::green'
-         id: random-color-generator
+       run: echo '::set-output name=SELECTED_COLOR::green'
+       id: random-color-generator
      - name: Get color
        run: echo "The selected color is ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}"
         
