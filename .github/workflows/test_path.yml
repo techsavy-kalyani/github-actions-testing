@@ -1,5 +1,8 @@
 name: Test Path with id
 
+env:
+  WORKSPACE_PATH: 'custom path'
+  
 on: 
   push:
   workflow_dispatch:
@@ -24,7 +27,7 @@ jobs:
          echo "::set-output name=DRIVER_PATH::$(pwd)"
          
      - name: Print path
-       run: echo "${{ steps.path_by_id.outputs.DRIVER_PATH }}
+       run: echo "${{ steps.path_by_id.outputs.DRIVER_PATH }}" >> ${{ env.WORKSPACE_PATH }}
 
      
      - name: Set selected color
